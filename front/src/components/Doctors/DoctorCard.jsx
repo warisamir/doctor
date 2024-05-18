@@ -2,7 +2,7 @@ import startIcon from './../../assets/Image/Star.png';
 import { Link } from 'react-router-dom';
 import { BsArrowRight } from 'react-icons/bs';
 const DoctorCard = ({doctor}) => {
-    const {name,avgRating, totalRating ,photo, specialization, totalPatients ,hospital}=doctor
+    const {name ,specialization,avgRating,totalRating,photo, totalPatients ,hospital}=doctor
   return (
     <div>
         <div>
@@ -28,7 +28,7 @@ const DoctorCard = ({doctor}) => {
             <p className='text-[14px] leading-6 font-[400] text-textColor'>At {hospital}</p>
             </div>
            
-            <Link to='/doctors' className='w-[44px] h-[44px] rounded-full border border-solid  border-[#181A1E]  mt-[30px] mx-auto flex items-center
+            <Link to='/doctors/1' className='w-[44px] h-[44px] rounded-full border border-solid  border-[#181A1E]  mt-[30px] mx-auto flex items-center
            justify-center group hover:bg-primaryColor hover:border-none'>
             <BsArrowRight className="group-hover:text-white w-6 h-5"/>
            </Link>
