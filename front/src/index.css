@@ -31,6 +31,14 @@
         background-position: center;
         background-size: cover;
     }
+    .form__label{
+        @apply  text-textColor font-semibold text-[16px] mb-2 leading-7;
+    }
+    .form__input{
+        @apply w-full border border-[#0066ff61] focus:outline-none
+        focus:border-primaryColor text-[16px] leading-7 text-headingColor
+         px-4 py-3 placeholder:text-textColor cursor-pointer rounded-md;
+    }
 }
 
 @media only screen and (max-width: 1024px) {
