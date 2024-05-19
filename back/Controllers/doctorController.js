@@ -35,13 +35,18 @@ export const deleteDoctor=async(req,res)=>{
 export const getSingleDoctor=async(req,res)=>{
     const id=req.params.id;
     try{
-        const doctor=await Doctor.findById(id).select('-password')
-        res.status(200).json({success:true,
-         message:"succesfully Doctor found",
-        data: doctor})
+        const doctor=await Doctor.findById(id)
+        .populate('reviews')
+        .select('-password');
+        res.status(200).json({
+            success:true,
+            message:"succesfully Doctor found",
+            data: doctor,
+        });
     }
     catch(error){
-        res.status(404).json({success:false,
+        res.status(404).json({
+            success:false,
             message:"Doctor not found"})
     }
 }
@@ -51,14 +56,15 @@ export const getAllDoctor=async(req,res)=>{
     let doctors;
     const {query} =req.query;
     if(query){
-        doctors=await Doctor.find({isApproved:"approved",$or:[
-            {name:{regex:query ,$options:"i"}},
+        doctors=await Doctor.find({
+            isApproved:'approved',
+            $or: [
+            {name:{$regex:query ,$options:"i"}},
             {specialization:{$regex:query ,$options:"i"}},
-
         ]})
     }
     else{
-     doctors=await Doctor.find({isApproved:"apporved"}).select('-password')
+     doctors=await Doctor.find({isApproved:'approved'}).select('-password')
     }  
      res.status(200).json({success:true,
          message:"list of Doctors",

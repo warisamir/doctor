@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import authRoute from "./Routes/auth.js"
 import userRoute from './Routes/user.js'
 import doctorRoute from './Routes/doctors.js';
+import reviewRoute from'./Routes/review.js';
 dotenv.config()
 
 const app=express()
@@ -36,7 +37,7 @@ app.use(cors(corsOptions))
 app.use('/api/v1/auth',authRoute)  //domain for register and login api 
 app.use('/api/v1/user',userRoute)
 app.use('/api/v1/doctors',doctorRoute);
-
+app.use('api/v1/reviews',reviewRoute);
 app.listen(port ,()=>{
     connectDB();
     console.log(`Server is running at ${port}`)

@@ -3,7 +3,7 @@ import { updatedUser,deleteUser,getAllUser,getSingleUser } from "../Controllers/
 import { authenticate, restrict } from "../Auth/verifyToken.js";
 const router = express.Router();
 
-router.get('/',authenticate,restrict(['patient']),getAllUser);
+router.get('/',authenticate,restrict(['admin']),getAllUser);
 router.get('/:id',authenticate,restrict(['patient']),getSingleUser);
 router.patch('/:id',authenticate,restrict(['patient']),updatedUser)
 router.delete('/:id',authenticate,restrict(['patient']),deleteUser)
