@@ -5,6 +5,7 @@ import  mongoose from "mongoose";
 import dotenv from "dotenv";
 import authRoute from "./Routes/auth.js"
 import userRoute from './Routes/user.js'
+import doctorRoute from './Routes/doctors.js';
 dotenv.config()
 
 const app=express()
@@ -34,6 +35,7 @@ app.use(cookieParser())
 app.use(cors(corsOptions))
 app.use('/api/v1/auth',authRoute)  //domain for register and login api 
 app.use('/api/v1/user',userRoute)
+app.use('/api/v1/doctors',doctorRoute);
 
 app.listen(port ,()=>{
     connectDB();
