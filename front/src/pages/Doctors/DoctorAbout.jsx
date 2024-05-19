@@ -1,5 +1,5 @@
 import React from 'react'
-import { formateDate } from '../../utils/formateDate'
+import { formatDate } from './../../../utils/formatDate'
 const DoctorAbout = () => {
   return (
     <div>
@@ -24,7 +24,7 @@ const DoctorAbout = () => {
             <ul className="pt-4 md:p-5">
                 <li className="flex flex-col sm:flex-row sm:justify-between sm:items-end md:gap-5  mb-[30px[">
                    <div>
-                    <span className='text-irisBlueColor text-[15px] leading-6 font-semibold'>{formateDate("09-13-2014")} -{formateDate("09-13-2016")}</span>
+                    <span className='text-irisBlueColor text-[15px] leading-6 font-semibold'>{formatDate("09-13-2014")} -{formatDate("09-13-2016")}</span>
                     <p className='text-[16px]  leading-6 font-medium text-textColor'>PHD in Surgeon </p>
                     </div>
                     <p className='text-[14px] leading-5  font-medium text-textColor'>New Apollo  hospital,New York</p>
@@ -32,7 +32,7 @@ const DoctorAbout = () => {
                 </li>
                 <li className="flex flex-col sm:flex-row sm:justify-between sm:items-end md:gap-5  mb-[30px[">
                    <div>
-                    <span className='text-irisBlueColor text-[15px] leading-6 font-semibold'>{formateDate("07-04-2010")}-{formateDate("08-13-2014")}</span>
+                    <span className='text-irisBlueColor text-[15px] leading-6 font-semibold'>{formatDate("07-04-2010")}-{formatDate("08-13-2014")}</span>
                     <p className='text-[16px]  leading-6 font-medium text-textColor'>PHD in Surgeon </p>
                     </div>
                     <p className='text-[14px] leading-5  font-medium text-textColor'>New Apollo  hospital,New York</p>
@@ -46,7 +46,7 @@ const DoctorAbout = () => {
         <ul className='grid sm:grid-cols-2 gap-[30px] pt-4 md:p-5'>
             <li className='p-4 rounded bg-[#fff9ea]'>
                 <span className='text-yellowColor text-[15px] leading-6font-semibold'>
-                    {formateDate("07-04-2010")}-{formateDate("08-03-2014")}
+                    {formatDate("07-04-2010")}-{formatDate("08-03-2014")}
                 </span>
                 <p className='text-[16px]  leading-6 font-medium text-textColor'>Sr. Surgeon </p>
                 <p className='text-[16px]  leading-5 font-medium text-textColor'>New Apollo Hospital ,New York  </p>
@@ -54,7 +54,7 @@ const DoctorAbout = () => {
 
             <li className='p-4 rounded bg-[#fff9ea]'>
                 <span className='text-yellowColor text-[15px] leading-6font-semibold'>
-                    {formateDate("07-04-2010")}-{formateDate("08-03-2014")}
+                    {formatDate("07-04-2010")}-{formatDate("08-03-2014")}
                 </span>
                 <p className='text-[16px]  leading-6 font-medium text-textColor'>Sr. Surgeon </p>
                 <p className='text-[16px]  leading-5 font-medium text-textColor'>New Apollo Hospital ,New York  </p>
