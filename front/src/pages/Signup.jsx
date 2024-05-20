@@ -3,14 +3,17 @@ import avatar from '../assets/Image/doctor-img01.png'
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import uploadImageToCloudinary from '../../utils/uploadCloudinary.js';
+import  {BASE_URL} from '../../config.js';
+import {toast} from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import HashLoader from 'react-spinners/HashLoader'
 const Signup = () => {
 const handleInputChange=e=>{
- 
   setformData({...formData,[e.target.name]:e.target.value});
 }
-
+const [loading, setLoading] = useState(false);
 const [selectedFile, setSelectedFile] = useState(null)
-
+const [previewURL, setPreviewURL] = useState("");
 const [formData, setformData] = useState({
   name:'',
   email:'',
@@ -20,15 +23,41 @@ const [formData, setformData] = useState({
   role:'patient'
 })
 
+const navigate=useNavigate();
+
+
 const handleFileInputChange=async(event)=>{
    const file =event.target.files[0];
    const data=await uploadImageToCloudinary(file);
    console.log(data);
+   setPreviewURL(data.url);
+   setSelectedFile(data.url);
+   setformData({...formData,photo:data.url});
   //  console.log(file);
   }
   const submitHandler =async (event)=>{
     console.log(formData);
     event.preventDefault();
+    setLoading(true);
+    try{
+      const res=await fetch(`${BASE_URL}/auth/register`,{
+        method:'post',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+      const  {message}=await res.json();
+      if(!res.ok){
+        throw new Error(message)
+      }
+      setLoading(false);
+      toast.success(message)
+      navigate('/login')
+    }catch(err){
+      toast.error(err.message)
+      setLoading(false)
+    }
 
   }
 
@@ -108,10 +137,10 @@ const handleFileInputChange=async(event)=>{
             </label>
           </div>
           <div  className='m-5 flex items-center gap-3'>
-            <figure className='w-[60px] h-[60px] rounded-full border-2 border-solid border-primaryColor
+            {selectedFile && <figure className='w-[60px] h-[60px] rounded-full border-2 border-solid border-primaryColor
             flex items-center justify-center'>
-              <img src={avatar}  alt="" className='w-full rounded-full'/>
-            </figure>
+              <img src={previewURL}  alt="" className='w-full rounded-full'/>
+            </figure>}
             <div className='relative w-[160px] h-[50px] '>
               <input type="file" name="photo" id="customFile"
               onChange={handleFileInputChange}
@@ -124,9 +153,10 @@ const handleFileInputChange=async(event)=>{
           </div>
 
           <div className="mt-7">
-          <button type="submit" className="w-full bg-primaryColor text-white text-[18px] 
+          <button type="submit"
+          disabled= {loading && true}  className="w-full bg-primaryColor text-white text-[18px] 
           leading-[30px] rounded-lg">
-            Signup 
+            {loading? <HashLoader size={35} color='#ffffff'/>: 'Signup'} 
           </button>
         </div>
           <p className="mt-5 text-textColor ">
