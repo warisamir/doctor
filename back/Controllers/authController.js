@@ -20,13 +20,18 @@ export const register =async(req,res)=>{
         if(user){
             return res.status(400).json({msg:"User already exists"});
         }
+
         const salt= await bcrypt.genSalt(10);
         const hash= await bcrypt.hash(password,salt);
+
         if(role=="patient"){
             user=new User({
-        name,email,
-    password:hash,
-     photo, gender ,role})
+                        name,
+                        email,
+                        password:hash,
+                        photo, 
+                        gender,
+                        role})
             }
             if(role=="doctor"){
                 user=new Doctor({

@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom'; // Import Link
 import logo from '../../assets/Image/logo.png';
 import {BiMenu} from 'react-icons/bi';
 import { AuthContext } from '../../context/AuthContext';
+
 const navLinks = [
   {
     path: '/home',
@@ -44,11 +45,11 @@ const {user,role,token} =useContext(AuthContext)
 
 const toggleMenu=()=> menuRef.current.classList.toggle('show__menu')
   
-
   return (
     <header className='header flex items-center' ref={headerRef}>
-      <div className='flex items-center justify-between w-full'>
-        <div className="logo-container flex items-center">
+      <div className='container'>
+        <div className=" flex items-center justify-between">
+          <div>
           <img src={logo} alt="Logo" />
         </div>
         <div className="navigation" ref={menuRef} onClick={toggleMenu}>
@@ -66,13 +67,14 @@ const toggleMenu=()=> menuRef.current.classList.toggle('show__menu')
             ))}
           </ul>
         </div>  
-        <div className="flex items-center gap-4 px-30">
+        <div className="flex items-center gap-4 ">
           {
-            token && user ?  <div className='hidden'>
-            <Link to={`${role=='doctor'? '/doctors/profile/me':'users/profile/me'}`}>
-              <figure className='w-[35px] rounded-full cursor-pointer' >
+            token && user ?  <div >
+            <Link to={`${role=="doctor"? "/doctors/profile/me":"/users/profile/me"}`}>
+              <figure className='w-[6rem] h-[2rem] rounded-full cursor-pointer' >
                 <img src={user?.photo} className='w-full rounded-full '/>
               </figure>
+        
             </Link>
           </div>:
             <Link to='/login'>
@@ -88,6 +90,7 @@ const toggleMenu=()=> menuRef.current.classList.toggle('show__menu')
               
           </span>
         </div>
+      </div>
       </div>
     </header>
   );

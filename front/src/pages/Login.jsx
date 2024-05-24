@@ -3,7 +3,7 @@ import { Link ,useNavigate } from "react-router-dom"
 import { BASE_URL } from "../../config"
 import { toast } from "react-toastify";
 import {AuthContext} from '../context/AuthContext.jsx'
-import { HashLoader} from 'react-spinners/HashLoader.js'
+import  HashLoader from 'react-spinners/HashLoader.js'
 const Login = () => {
   const navigate=useNavigate();
   const [loading, setLoading] = useState(false);

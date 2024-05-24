@@ -1,5 +1,5 @@
 import signupImg from '../assets/Image/signup.gif'
-import avatar from '../assets/Image/doctor-img01.png'
+import avatar from './../assets/Image/doctor-img01.png'
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import uploadImageToCloudinary from '../../utils/uploadCloudinary.js';
@@ -18,7 +18,7 @@ const [formData, setformData] = useState({
   name:'',
   email:'',
   password:'',
-  photo:'',
+  photo:"",
   gender:'',
   role:'patient'
 })
@@ -26,15 +26,14 @@ const [formData, setformData] = useState({
 const navigate=useNavigate();
 
 
-const handleFileInputChange=async(event)=>{
-   const file =event.target.files[0];
-   const data=await uploadImageToCloudinary(file);
-   console.log(data);
-   setPreviewURL(data.url);
-   setSelectedFile(data.url);
-   setformData({...formData,photo:data.url});
-  //  console.log(file);
-  }
+const handleFileInputChange = async event => {
+  const file = event.target.files[0];
+  const data = await uploadImageToCloudinary(file);
+  console.log(data);
+  setPreviewURL(data.url);
+  setSelectedFile(data.url);
+  setformData({ ...formData, photo: data.url });
+};
   const submitHandler =async (event)=>{
     console.log(formData);
     event.preventDefault();
@@ -144,7 +143,7 @@ const handleFileInputChange=async(event)=>{
             <div className='relative w-[160px] h-[50px] '>
               <input type="file" name="photo" id="customFile"
               onChange={handleFileInputChange}
-              accept=".jpg,.png"  className='absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer'/>
+              accept=".jpg, .png , .jpeg"  className='absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer'/>
               <label htmlFor='customFile' className='absolute top-0 w-full left-0 h-full flex item-center px-[0.75rem] py-[0.375rem] text-[15px] leading-6 overflow-hidden
               bg-[#0066ff46] text-handlingColor font-semibold rounded-lg truncate cursor-pointer'>
                 Upload photo 
