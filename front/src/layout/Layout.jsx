@@ -1,5 +1,5 @@
 import Header from '../components/Header/Header'
-import Router from '../components/Routes/Routers'
+import Router from '../routes/Router.jsx'
 import Footer from '../components/Footer/Footer'
 export const Layout = () => {
   return (

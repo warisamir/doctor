@@ -13,7 +13,7 @@ import videoImg from './../assets/Image/video-icon.png'
 import avatarIcon from './../assets/Image/avatar-icon.png'
 import DoctorList from '../components/Doctors/DoctorList';
 import faqIcon from './../assets/Image/faq-img.png'
-import FaqList from './FaqList/FaqList';
+import FaqList from '../components/FaqList/FaqList';
 import Testimonial from '../components/Testimonial/Testimonial';
 const Home = () => {
   return (

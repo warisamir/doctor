@@ -3,7 +3,8 @@ import {
     deleteDoctor,
     getSingleDoctor,
     getAllDoctor,
-    updatedDoctor
+    updatedDoctor,
+    getDoctorProfile
 } from '../Controllers/doctorController.js';
 
 import { authenticate, restrict } from '../Auth/verifyToken.js';
@@ -15,5 +16,5 @@ router.get("/:id",getSingleDoctor);
 router.get('/',getAllDoctor)
 router.patch("/:id",authenticate,restrict(['doctor']),updatedDoctor)
 router.delete('/:id',authenticate,restrict(['doctor']),deleteDoctor)
-
+router.get('/profile/me',authenticate,restrict(['doctor']), getDoctorProfile)
 export default router;
