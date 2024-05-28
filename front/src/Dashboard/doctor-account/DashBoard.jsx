@@ -1,5 +1,5 @@
-// import { BASE_URL } from "../../../config"
-// import {useGetProfile} from '../../hooks/useFetchData'
+import { BASE_URL } from "../../../config"
+import {useGetProfile} from '../../hooks/useFetchData'
 const DashBoard = () => {
   // const {data,loading,error}=useGetProfile(`${BASE_URL}/doctors/prodile/me`)
   return (

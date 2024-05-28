@@ -12,11 +12,11 @@ const MyAccount = () => {
     const [Tab, setTab] = useState('bookings')
     const { dispatch } = useContext(AuthContext)
     const {
-        data:userdata, 
+        data:userData, 
         loading,
          error
         }=useFetchData(`${BASE_URL}/users/profile/me`);
-    console.log(userdata,'userdata');
+    console.log(userData,'userData');
     const handleLogout=()=>{
         dispatch({type:"LOGOUT"})
     }
@@ -32,18 +32,18 @@ const MyAccount = () => {
             <div className="pb-[50px] px-[30px] rounded-md ">
                 <div className="flex items-center justify-center">
                 <figure className='w-[100px] h-[100px] rounded-full border-2 border-solid'>
-                    <img src={userImg} alt=""
+                    <img src={userData.photo} alt=""
                     className='w-full h-full rounded-full ' />
                 </figure>
                 </div>
                   <div className='text-center mt-4'>
-                    <h3 className='text-[18px] leading-[30px] text-headingColor font-bold'>Muhibur Rehman</h3>
+                    <h3 className='text-[18px] leading-[30px] text-headingColor font-bold'>{userData.name}</h3>
                     <p className='text-textColor text-[15px] leading-6 font-medium'>
-                        example@gmail.com
+                      {userData.email}
                     </p>
                     <p className='text-textColor text-[15px] leading-6 font-medium'>
                         Blood type: <span className='ml-2  text-headingColor text-[22px] leading-8'>
-                            O-</span>
+                            {userData.bloodType}</span>
                     </p>
                 </div>
     
@@ -66,7 +66,7 @@ const MyAccount = () => {
                     Tab==='bookings' && <MyBookings/>
                 }
                 {
-                    Tab==='settings' &&<Profile/>
+                    Tab==='settings' &&<Profile user={userData}/>
                 }
             </div>
             </div>

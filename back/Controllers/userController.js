@@ -80,7 +80,11 @@ export const getMyAppointment=async(req,res)=>
         const bookings=await Booking.find({user:req.userId})
         const doctorIds=bookings.map(el=>el.doctor.id)
         const doctors=await Doctor.find({_id:{$in:doctorIds}}).select('-password')
-        res.status(200).json({success:true,message:"Appointments are getting",data:doctors})
+        // if(doctors.length==0 ){
+        //     res.status(200).json({sucess:true,message:"No Appointments yet!",data:[]})
+        // }
+        res.status(200).json({success:true,message:"doctor appointments list",data:doctors.length==0?[]:doctors})   
+
      } catch (error) {
         res.status(500)
         .json({success:false, message:"Something went wrong ,cannnot get"})
