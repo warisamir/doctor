@@ -58,11 +58,14 @@ export const getAllUser=async(req,res)=>{
 
 export const getUserProfile=async(req,res)=>{
     const userId=req.userId
+    console.log(userId);
     try{
-        const user=await user.findById(userId);
-        if(!userId){
+        const user=await User.findById(userId);
+        console.log(user)
+        if(!user){
             return res.status(404).json({success:false,messsage:'User not found'})
         }
+        console.log(user._doc)
         const {password, ...rest}=user._doc;
         res.status(200).json({success:true,message:"Profile Info getting",data:{...rest}});
     }

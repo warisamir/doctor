@@ -42,7 +42,7 @@ export const register =async(req,res)=>{
                 await user.save();
                 res.status(200).json({sucess:true,message:"User sucessfully created "})
        }catch(err){
-        res.status(500).json({sucesss:false,message:"Intern server error"})
+        res.status(500).json({sucesss:false,message:"Internal server error"})
     }
 }
 export const login =async(req,res)=>{
