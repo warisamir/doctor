@@ -231,7 +231,7 @@ endingTime:"4:30",
                       <div>
                         <p className="form__label">Starting Date*</p>
                         <input
-                          type="data"
+                          type="date"
                           name="startingDate"
                           value={Item.startingDate}
                           className="form__input"
@@ -242,8 +242,8 @@ endingTime:"4:30",
                       <div>
                         <p className="form__label">Ending Date*</p>
                         <input
-                          type="data"
-                          name="EndingDate"
+                          type="date"
+                          name="endingDate"
                           value={Item.endingDate}
                           className="form__input"
                           onChange={(e) => handleQualificationChange(e, index)}
@@ -303,7 +303,7 @@ endingTime:"4:30",
                   <div>
                     <p className="form__label">Starting Date*</p>
                     <input
-                      type="data"
+                      type="date"
                       name="startingDate"
                       value={Item.startingDate}
                       className="form__input"
@@ -312,10 +312,10 @@ endingTime:"4:30",
                   </div>
 
                   <div>
-                    <p className="form__labe">Ending Date*</p>
+                    <p className="form__label">Ending Date*</p>
                     <input
-                      type="data"
-                      name="EndingDate"
+                      type="date"
+                      name="endingDate"
                       value={Item.endingDate}
                       className="form__input"
                       onChange={(e) => handleExperienceChange(e, index)}
