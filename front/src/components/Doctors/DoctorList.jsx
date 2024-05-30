@@ -4,7 +4,7 @@ import useFetchData from '../../hooks/useFetchData';
 import Loader from '../../components/Loader/Loader'
 import Error from '../../components/Error/Error.jsx'
 const DoctorList = () => {
-  const {data:doctors,loading,error}=useFetchData(`${BASE_URL}/`)
+  const {data:doctors,loading,error}=useFetchData(`${BASE_URL}/doctors`)
   return (
     <>
     {loading && <Loader/>}

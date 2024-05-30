@@ -101,11 +101,17 @@ const {
                     experiences={experiences}
                   />
                 )}
-                {Tab == "Feedback" && <Feedback  reviews={reviews} totalRating={totalRating}/>}
+                {Tab == "Feedback" && (
+                  <Feedback reviews={reviews} totalRating={totalRating} />
+                )}
               </div>
             </div>
             <div>
-              <Sidepanel />
+              <Sidepanel
+                doctorId={doctor._id}
+                ticketPrice={ticketPrice}
+                timeSlots={timeSlots}
+              />
             </div>
           </div>
         )}

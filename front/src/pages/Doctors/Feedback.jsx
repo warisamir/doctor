@@ -5,7 +5,9 @@ import FeedbackForm from './FeedbackForm';
 
 const Feedback = ({ reviews, totalRating }) => {
   const [showFeedbackForm, setShowFeedbackForm] = useState(false);
-
+  let totallength=reviews.length;
+  console.log(totallength)
+  totalRating=totallength;
   return (
     <div>
       <div className="mb-[50px]">
