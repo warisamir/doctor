@@ -15,7 +15,7 @@ const Profile = ({doctorData}) => {
         gender:"",
         specialization:"",
         ticketPrice:0,
-        qualifications:[ ],
+        qualifications:[],
         experiences:[],
         timeSlots:[],
         about:'',
@@ -240,7 +240,7 @@ endingTime:"4:30",
                       </div>
 
                       <div>
-                        <p className="form__labe">Ending Date*</p>
+                        <p className="form__label">Ending Date*</p>
                         <input
                           type="data"
                           name="EndingDate"
