@@ -2,13 +2,13 @@ import {doctors} from '../../assets/data/doctors.js'
 import DoctorCard from './DoctorCard';
 import { BASE_URL } from '../../../config.js';
 import useFetchData from '../../hooks/useFetchData';
-import Loader from '../../components/Loader/Loader.jsx'
+import Loader from '../../components/Loader/Loader'
 import Error from '../../components/Error/Error.jsx'
 const DoctorList = () => {
   const {data:doctors,loading,error}=useFetchData(`${BASE_URL}/doctors`)
   return (
     <>
-    {loading && <loader/>}
+    {loading && <Loader/>}
     {error && <Error/>}
     {!loading && !error && <div
       className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 
