@@ -1,11 +1,10 @@
-import {doctors} from '../../assets/data/doctors.js'
 import DoctorCard from './DoctorCard';
 import { BASE_URL } from '../../../config.js';
 import useFetchData from '../../hooks/useFetchData';
 import Loader from '../../components/Loader/Loader'
 import Error from '../../components/Error/Error.jsx'
 const DoctorList = () => {
-  const {data:doctors,loading,error}=useFetchData(`${BASE_URL}/doctors`)
+  const {data:doctors,loading,error}=useFetchData(`${BASE_URL}/`)
   return (
     <>
     {loading && <Loader/>}

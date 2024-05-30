@@ -12,7 +12,7 @@ dotenv.config()
 const app=express()
 const port =process.env.PORT|| 5000
 const corsOptions={
-    origin : true,
+    origin : "*",
 }
 app.get('/',(req,res)=>{
     res.send("Api is working")
