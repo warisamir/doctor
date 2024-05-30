@@ -8,6 +8,7 @@ import { useState } from "react";
 import DoctorAbout from '../../pages/Doctors/DoctorAbout'
 import Tabs from "./Tabs";
 import Profile from "./Profile";
+import Appointments from "./Appointments";
 const DashBoard = () => {
   const {data,
     loading,
@@ -71,7 +72,7 @@ const DashBoard = () => {
                       <DoctorAbout name={data.name} about={data.about} qualifications={data.qualifications}
                        experience={data.experience}/>
                       </div>}
-                  {tab=="appointments" && <div> Appointments</div>}
+                  {tab=="appointments" && <Appointments appointments={data.appointments}/>}
                   {tab=="settings" &&  <Profile doctorData={data}/>}
                 </div>
             </div>

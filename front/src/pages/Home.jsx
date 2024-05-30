@@ -205,7 +205,7 @@ const Home = () => {
             expert health care.
             </p>
         </div>
-        <DoctorList/>
+        
       </div>
      </section>
      {/* faq section */}
