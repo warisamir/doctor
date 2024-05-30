@@ -9,42 +9,61 @@ const generateToken=user=>{
         {expiresIn: process.env.JWT_EXPIRE}
     )
 }
-export const register =async(req,res)=>{
-    const {name,email,password,role, photo ,gender}=req.body;
-    try{
-          let  user=null;
-         if(role=="patient")
-            user= await User.findOne({email});
-        else if(role=="doctor")
-            user=await Doctor.findOne({email});
-        if(user){
-            return res.status(400).json({msg:"User already exists"});
-        }
 
-        const salt= await bcrypt.genSalt(10);
-        const hash= await bcrypt.hash(password,salt);
-
-        if(role=="patient"){
-            user=new User({
-                        name,
-                        email,
-                        password:hash,
-                        photo, 
-                        gender,
-                        role})
-            }
-            if(role=="doctor"){
-                user=new Doctor({
-            name,email,
-        password:hash,
-         photo, gender ,role})
-                }
-                await user.save();
-                res.status(200).json({sucess:true,message:"User sucessfully created "})
-       }catch(err){
-        res.status(500).json({sucesss:false,message:"Internal server error"})
+export const register = async (req, res) => {
+    const { email, password, name, role, photo, gender } = req.body;
+    console.log("Received data:", req.body); // Debugging line
+    console.log()
+    try {
+      if (!email || !password || !name || !role || !gender) {
+        return res.status(400).json({ msg: "Please enter all fields" });
+      }
+  
+      let user = null;
+      if (role === "patient") {
+        user = await User.findOne({ email });
+      } else if (role === "doctor") {
+        user = await Doctor.findOne({ email });
+      } else {
+        return res.status(400).json({ msg: "Invalid role" });
+      }
+  
+      if (user) {
+        return res.status(400).json({ msg: "User already exists" });
+      }
+  
+      const salt = await bcrypt.genSalt(10);
+      const hash = await bcrypt.hash(password, salt);
+  
+      if (role === "patient") {
+        user = new User({
+          name,
+          email,
+          password: hash,
+          photo,
+          gender,
+          role,
+        });
+      } else if (role === "doctor") {
+        user = new Doctor({
+          name,
+          email,
+          password: hash,
+          photo,
+          gender,
+          role,
+        });
+      }
+  
+      await user.save();
+      res.status(200).json({ success: true, message: "User successfully created" });
+    } catch (err) {
+      console.error("Error creating user:", err.message); // Debugging line
+      res.status(500).json({ success: false, message: "Internal server error" });
     }
-}
+  }
+
+
 export const login =async(req,res)=>{
     const {email}=req.body;
     try{

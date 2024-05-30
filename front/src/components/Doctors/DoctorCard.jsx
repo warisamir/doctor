@@ -48,7 +48,7 @@ const DoctorCard = ({doctor}) => {
         </div>
 
         <Link
-          to="/doctors/1"
+          to={`/doctors/${doctor._id}`}
           className="w-[44px] h-[44px] rounded-full border border-solid  border-[#181A1E]  mt-[30px] mx-auto flex items-center
            justify-center group hover:bg-primaryColor hover:border-none"
         >

@@ -8,15 +8,21 @@ import { BASE_URL } from '../../../config.js';
 import useFetchData from '../../hooks/useFetchData';
 import Loader from '../../components/Loader/Loader'
 import Error from '../../components/Error/Error'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 const Doctors = () => {
-  const {data:doctors,loading ,error}= useFetchData(`${BASE_URL}/doctors?query=${query}`);
   const [query,setQuery]=useState('');
+  const [debounceQuery, setdebounceQuery] = useState(""); 
   const handleSearch=()=>{
     setQuery(query.trim());
     console.log('handle search');
   }
-
+  const {data:doctors,loading ,error}= useFetchData(`${BASE_URL}/doctors?query=${query}`);
+ useEffect(()=>{
+  const timeout= setTimeout(()=>{
+setdebounceQuery(query);
+  },700)
+  return ()=>clearTimeout(timeout);
+ },[query]);
     return (
     <>
       <section className="bg-[#fff9ea]">
