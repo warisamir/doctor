@@ -4,7 +4,7 @@ import {AiOutlineDelete} from 'react-icons/ai';
  import UploadImageToCloudinary  from '../../../utils/uploadCloudinary.js';
  import {BASE_URL,token} from '../../../config.js'
  import {toast} from 'react-toastify'
-
+ import { useEffect } from 'react';
 const Profile = ({doctorData}) => {
     const [formData, setFormData]=useState({
         name:"",
@@ -20,7 +20,25 @@ const Profile = ({doctorData}) => {
         timeSlots:[],
         about:'',
         photo:null
-    })
+    });
+
+    useEffect(()=>{
+      setFormData({
+        name:doctorData?.name,
+        email:doctorData?.email,
+        password:doctorData?.password,
+        phone:doctorData?.phone,
+        bio:doctorData?.bio,
+        gende:doctorData?.gender,
+        specialization:doctorData?.specialization,
+        ticketPrice:doctorData?.ticketPrice,
+        qualifications:doctorData?.qualifications,
+        experiences:doctorData?.experiences,
+        timeSlots:doctorData?.timeSlots,
+        about:doctorData?.about,
+        photo:doctorData?.photo
+      })
+    },[doctorData]);
     const handleFileInputChange=async event=>{
     const file=event.target.files[0];
     const data= await UploadImageToCloudinary(file);
