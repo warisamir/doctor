@@ -5,26 +5,26 @@ import {BASE_URL, token} from '../../../config.js'
 import { toast } from 'react-toastify'
  const Sidepanel = ({doctorId,ticketPrice,timeSlots}) => {
 
-    const bookinghandler= async(req,res)=>{
-        console.log("booking handler called")
-        try {
-            const res=await fetch(`${BASE_URL}/bookings/checkout-session/${doctorId}`,{
-                method:"POST",
-                headers:{
-                    "Authorization":`Bearer ${token}`
-                    }
-            })
-            const data=await res.json()
-            if(!res.ok){
-                throw new Error(data.message+ "Pleasetry again")
-            }
-            if(data.session.url){
-                window.location.href=data.session.url;
-            }
-        } catch (error) {
-            toast.error(error,message)
-        }
-    }
+    // const bookinghandler= async(req,res)=>{
+    //     console.log("booking handler called")
+    //     try {
+    //         const res=await fetch(`${BASE_URL}/bookings/checkout-session/${doctorId}`,{
+    //             method:"POST",
+    //             headers:{
+    //                 "Authorization":`Bearer ${token}`
+    //                 }
+    //         })
+    //         const data=await res.json()
+    //         if(!res.ok){
+    //             throw new Error(data.message+ "Pleasetry again")
+    //         }
+    //         if(data.session.url){
+    //             window.location.href=data.session.url;
+    //         }
+    //     } catch (error) {
+    //         toast.error(error,message)
+    //     }
+    // }
   return (
     <div className="shadow-panelShadow p-3 lg:p-5 
     rounded-md">
