@@ -4,14 +4,14 @@ here is the steps to copy the whole structure locally and set it up
 
 # git clone https://github.com/warisamir/doctor.git
 
-# cd back 
-# npm i 
-# set up .env file 
+ cd back 
+ npm i 
+ set up .env file 
 .env.example
-# npm start 
+ npm start 
 
-now comms to frontend part 
-# cd front 
-# npm i 
-before this  step go to config.js and past your hosted backend link from  render
-# npm run dev
+# now comes to frontend part 
+ cd front 
+ npm i 
+before this  step go to config.js and past your hosted backend link from the render
+ npm run dev
