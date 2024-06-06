@@ -4,11 +4,11 @@ here is the steps to copy the whole structure locally and set it up
 
 # git clone https://github.com/warisamir/doctor.git
 
- cd back 
+ cd back //
  npm i 
- set up .env file 
-.env.example
- npm start 
+ set up .env file //
+.env.example //
+ npm start //
 
 # now comes to frontend part 
  cd front 
