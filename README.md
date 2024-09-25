@@ -1,7 +1,8 @@
 this is simple basic structure for Doctor Appointment 
 
 here is the steps to copy the whole structure locally and set it up 
-[image](https://github.com/user-attachments/assets/45956f95-f2bf-4e5a-87b3-77c581c939e3)
+[image](https://github.com/user-attachments/assets/eb4564b0-26bf-4aed-a7f1-fb847daf1b43)
+
 
 # git clone https://github.com/warisamir/doctor.git
 
